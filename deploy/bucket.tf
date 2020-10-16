@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "bucket" {
   }
 }
 
-resource "aws_s3_bucket_policy" "policy" {
+resource "aws_s3_bucket_policy" "static_policy" {
   bucket = aws_s3_bucket.static.id
   policy = data.aws_iam_policy_document.bucket.json
 }
@@ -24,10 +24,12 @@ resource "aws_s3_bucket" "static" {
     Creator = "Terraform"
   }
 
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
-  }
+  // using website is an alternative to using cloudfront,
+  // but requires the parameter acl = "public-read"
+  // website {
+  //   index_document = "index.html"
+  //   error_document = "error.html"
+  // }
 }
 
 resource "aws_s3_bucket_object" "object" {
