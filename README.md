@@ -1,4 +1,4 @@
-# (WIP) AWS Static Site
+# AWS Static Site
 
 This project is a small static site hosted from an S3 bucket via cloudfront.
 
