@@ -1,6 +1,10 @@
+
+resource "random_pet" "suffix" {
+}
+
 resource "aws_wafv2_ip_set" "iw_vpn" {
   provider = aws.us_east_1
-  name               = "iw-vpn"
+  name               = "iw-vpn-${random_pet.suffix.id}"
   scope              = "CLOUDFRONT"
   ip_address_version = "IPV4"
   addresses          = ["52.51.7.138/32"]
@@ -14,7 +18,7 @@ resource "aws_wafv2_ip_set" "iw_vpn" {
 
 resource "aws_wafv2_regex_pattern_set" "error" {
   provider = aws.us_east_1
-  name        = "error-pages"
+  name        = "error-pages-${random_pet.suffix.id}"
   scope       = "CLOUDFRONT"
 
   regular_expression {
@@ -34,7 +38,7 @@ resource "aws_wafv2_regex_pattern_set" "error" {
 
 resource "aws_wafv2_web_acl" "acl" {
   provider = aws.us_east_1
-  name = "cloudfront-acl"
+  name = "cloudfront-acl-${random_pet.suffix.id}"
   scope = "CLOUDFRONT"
 
   default_action {

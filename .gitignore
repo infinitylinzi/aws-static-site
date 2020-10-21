@@ -1,4 +1,3 @@
-/.aws
 terraform.tfvars
 .terraform
 terraform.tfstate*

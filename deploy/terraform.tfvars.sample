@@ -1,3 +1,0 @@
-aws_region="eu-west-1"
-aws_credentials_file="path/to/aws/credentials"
-aws_profile="default"

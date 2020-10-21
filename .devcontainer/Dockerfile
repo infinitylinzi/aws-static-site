@@ -6,3 +6,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-alpine-${VARIANT}
 
 RUN apk update \
     && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community terraform
+
+ENV AWS_REGION="eu-west-1" 
